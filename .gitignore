@@ -31,3 +31,38 @@ build/
 
 ### VS Code ###
 .vscode/
+
+*.class
+
+/node_modules
+
+*.pem
+*.ppk
+
+# Mobile Tools for Java (J2ME)
+.mjt.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#Gradle temporary files
+target/
+
+#Eclipse files
+**/.project
+**/.classpath
+**/.settings/
+/bin/
+blog/bin/
+**/.tern-project
+
+#IntelliJ files
+**/*.iml
+**/.idea
+**/.gradle
+
+#virtual machine crash logs, see
+hs_err_pid*
+/.metadata/
