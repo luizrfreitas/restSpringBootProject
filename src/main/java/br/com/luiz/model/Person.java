@@ -50,11 +50,11 @@ public class Person implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getAdress() {
+	public String getAddress() {
 		return adress;
 	}
 
-	public void setAdress(String adress) {
+	public void setAddress(String adress) {
 		this.adress = adress;
 	}
 
