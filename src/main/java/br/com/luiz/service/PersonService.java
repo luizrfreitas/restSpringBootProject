@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.luiz.PersonRepository;
 import br.com.luiz.data.vo.v1.PersonVO;
+import br.com.luiz.data.vo.v2.PersonVOV2;
 import br.com.luiz.exceptions.ResourceNotFoundException;
 import br.com.luiz.mapper.DozerMapper;
+import br.com.luiz.mapper.custom.PersonMapper;
 import br.com.luiz.model.Person;
 
 @Service
@@ -18,6 +20,9 @@ public class PersonService {
 	
 	@Autowired
 	private PersonRepository repository;
+	
+	@Autowired
+	private PersonMapper mapper;
 	
 	private final AtomicLong counter = new AtomicLong();
 	private Logger logger = Logger.getLogger(PersonService.class.getName());
@@ -42,6 +47,15 @@ public class PersonService {
 		var vo = repository.save(entity);
 		
 		return DozerMapper.parseObject(vo, PersonVO.class);
+	}
+	
+	public PersonVOV2 createV2(PersonVOV2 person) {
+		logger.info("Creating a new person.");
+		
+		var entity = mapper.convertVoToEntity(person);	
+		var vo = mapper.convertEntityToVo(repository.save(entity));
+		
+		return vo;
 	}
 	
 	public PersonVO update(PersonVO person) {
